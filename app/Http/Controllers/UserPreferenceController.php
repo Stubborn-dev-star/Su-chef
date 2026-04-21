@@ -2,63 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserPreference;
 use Illuminate\Http\Request;
 
 class UserPreferenceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Show the user's preferences
     public function index()
     {
-        //
+        $preference = UserPreference::where('user_id', auth()->id())->first();
+        return view('preferences.index', compact('preference'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Show form to edit preferences
+    public function edit()
     {
-        //
+        $preference = UserPreference::where('user_id', auth()->id())->first();
+        return view('preferences.edit', compact('preference'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // Save or update preferences
+    public function update(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'dietary_preference' => 'nullable|string|max:255',
+            'cuisine_preference' => 'nullable|string|max:255',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        UserPreference::updateOrCreate(
+            ['user_id' => auth()->id()],
+            [
+                'dietary_preference' => $request->dietary_preference,
+                'cuisine_preference' => $request->cuisine_preference,
+            ]
+        );
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('preferences.index')->with('success', 'Preferences updated successfully!');
     }
 }

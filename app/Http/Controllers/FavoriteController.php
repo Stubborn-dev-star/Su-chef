@@ -21,7 +21,7 @@ class FavoriteController extends Controller
     // Add a recipe to favorites
     public function store(Recipe $recipe)
     {
-        // Check if already favorited
+        // Check if already added to favorites;
         $exists = Favorite::where('user_id', auth()->id())
             ->where('recipe_id', $recipe->id)
             ->exists();

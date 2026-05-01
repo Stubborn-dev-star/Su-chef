@@ -41,25 +41,10 @@
                 <p class="text-gray-600 leading-relaxed">{{ $recipe->description }}</p>
             </div>
 
-            {{-- Steps --}}
+            {{-- Instructions --}}
             <div class="bg-white rounded-2xl p-8 shadow-sm">
                 <h2 class="font-serif text-2xl font-bold text-suText mb-6">Instructions</h2>
-                @if($recipe->steps->count() > 0)
-                    <div class="space-y-6">
-                        @foreach($recipe->steps->sortBy('step_number') as $step)
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center flex-shrink-0">
-                                {{ $step->step_number }}
-                            </div>
-                            <div class="pt-2">
-                                <p class="text-gray-600 leading-relaxed">{{ $step->instruction }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                @else
-                    <p class="text-gray-400">No instructions added yet.</p>
-                @endif
+                <p class="text-gray-400">No instructions added yet.</p>
             </div>
 
             {{-- Reviews --}}
@@ -121,8 +106,7 @@
                     <ul class="space-y-3">
                         @foreach($recipe->ingredients as $ingredient)
                         <li class="flex justify-between items-center py-2 border-b border-gray-50 last:border-0">
-                            <span class="text-gray-700 text-sm font-medium">{{ $ingredient->name }}</span>
-                            <span class="text-gray-400 text-sm">{{ $ingredient->pivot->quantity }} {{ $ingredient->unit }}</span>
+                            <span class="text-gray-700 text-sm font-medium">{{ $ingredient->name }}</span><span class="text-gray-400 text-sm">{{ $ingredient->pivot->quantity }}</span>
                         </li>
                         @endforeach
                     </ul>

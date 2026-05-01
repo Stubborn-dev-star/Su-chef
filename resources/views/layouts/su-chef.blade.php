@@ -19,7 +19,7 @@
             <li><a href="{{ route('recipes.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Recipes</a></li>
             <li><a href="{{ route('categories.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Categories</a></li>
             @auth
-                <li><a href="{{ route('favorites.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Favourites</a></li>
+                <li><a href="{{ route('favorites.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Favorites</a></li>
                 <li><a href="{{ route('shopping-lists.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Shopping List</a></li>
                 <li><a href="{{ route('dashboard') }}" class="text-white hover:text-secondary transition-colors font-medium">Dashboard</a></li>
                 <li>
@@ -45,9 +45,16 @@
 
     {{-- Flash Messages --}}
     @if(session('success'))
-        <div class="fixed top-20 right-5 z-50 bg-primary text-white px-6 py-4 rounded-xl shadow-lg font-medium animate-pulse">
+        <div id="flash-message" class="fixed top-20 right-5 z-50 bg-primary text-white px-6 py-4 rounded-xl shadow-lg font-medium transition-opacity duration-500">
             {{ session('success') }}
         </div>
+        <script>
+            setTimeout(function() {
+                const flash = document.getElementById('flash-message');
+                flash.style.opacity = '0';
+                setTimeout(() => flash.remove(), 500);
+            }, 3000);
+        </script>
     @endif
 
     {{-- Page Content --}}

@@ -55,11 +55,15 @@ class RecipeController extends Controller
         }
 
         // Attach ingredients
-        if ($request->ingredients) {
-            foreach ($request->ingredients as $ingredientId => $quantity) {
-                $recipe->ingredients()->attach($ingredientId, ['quantity' => $quantity]);
+            if ($request->ingredient_ids) {
+                foreach ($request->ingredient_ids as $index => $ingredientId) {
+                    if ($ingredientId) {
+                        $recipe->ingredients()->attach($ingredientId, [
+                            'quantity' => $request->quantities[$index] ?? ''
+                        ]);
+                    }
+                }
             }
-        }
 
         return redirect()->route('recipes.index')->with('success', 'Recipe created successfully!');
     }

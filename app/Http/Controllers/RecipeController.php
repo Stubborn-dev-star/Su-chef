@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -41,7 +42,7 @@ class RecipeController extends Controller
         }
 
         $recipe = Recipe::create([
-            'user_id'     => auth()->id(),
+            'user_id'     => Auth::id(),
             'title'       => $request->title,
             'description' => $request->description,
             'cook_time'   => $request->cook_time,

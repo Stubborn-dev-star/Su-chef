@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -17,7 +18,7 @@ class ReviewController extends Controller
         ]);
 
         Review::create([
-            'user_id'   => auth()->id(),
+            'user_id'   => Auth::id(),
             'recipe_id' => $recipe->id,
             'rating'    => $request->rating,
             'comment'   => $request->comment,

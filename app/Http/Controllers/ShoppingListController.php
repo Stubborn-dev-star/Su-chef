@@ -6,6 +6,7 @@ use App\Models\ShoppingList;
 use App\Models\ShoppingListItem;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShoppingListController extends Controller
 {
@@ -13,7 +14,7 @@ class ShoppingListController extends Controller
     public function index()
     {
         $shoppingLists = ShoppingList::with('items.ingredient')
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::id())
             ->latest()
             ->get();
         return view('shopping-lists.index', compact('shoppingLists'));
@@ -35,7 +36,7 @@ class ShoppingListController extends Controller
         ]);
 
         $shoppingList = ShoppingList::create([
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
             'name'    => $request->name,
         ]);
 

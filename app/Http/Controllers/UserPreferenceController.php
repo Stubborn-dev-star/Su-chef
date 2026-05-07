@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\UserPreference;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserPreferenceController extends Controller
 {
     // Show the user's preferences
     public function index()
     {
-        $preference = UserPreference::where('user_id', auth()->id())->first();
+        $preference = UserPreference::where('user_id', Auth::id())->first();
         return view('preferences.index', compact('preference'));
     }
 
     // Show form to edit preferences
     public function edit()
     {
-        $preference = UserPreference::where('user_id', auth()->id())->first();
+        $preference = UserPreference::where('user_id', Auth::id())->first();
         return view('preferences.edit', compact('preference'));
     }
 
@@ -30,7 +31,7 @@ class UserPreferenceController extends Controller
         ]);
 
         UserPreference::updateOrCreate(
-            ['user_id' => auth()->id()],
+            ['user_id' => Auth::id()],
             [
                 'dietary_preference' => $request->dietary_preference,
                 'cuisine_preference' => $request->cuisine_preference,

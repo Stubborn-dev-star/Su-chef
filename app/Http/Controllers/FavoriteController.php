@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -12,7 +13,7 @@ class FavoriteController extends Controller
     public function index()
     {
         $favorites = Favorite::with('recipe')
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::id())
             ->latest()
             ->get();
         return view('favorites.index', compact('favorites'));
@@ -22,13 +23,13 @@ class FavoriteController extends Controller
     public function store(Recipe $recipe)
     {
         // Check if already added to favorites;
-        $exists = Favorite::where('user_id', auth()->id())
+        $exists = Favorite::where('user_id', Auth::id())
             ->where('recipe_id', $recipe->id)
             ->exists();
 
         if (!$exists) {
             Favorite::create([
-                'user_id'   => auth()->id(),
+                'user_id'   => Auth::id(),
                 'recipe_id' => $recipe->id,
             ]);
         }
@@ -39,7 +40,7 @@ class FavoriteController extends Controller
     // Remove a recipe from favorites
     public function destroy(Recipe $recipe)
     {
-        Favorite::where('user_id', auth()->id())
+        Favorite::where('user_id', Auth::id())
             ->where('recipe_id', $recipe->id)
             ->delete();
 

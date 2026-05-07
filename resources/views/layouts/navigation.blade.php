@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <h1 class="text-primary font-bold text-3xl">Su-<span class="text-secondary text-2xl">Chef</span></h1>
                     </a>
                 </div>
 

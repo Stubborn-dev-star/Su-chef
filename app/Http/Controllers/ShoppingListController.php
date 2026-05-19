@@ -29,31 +29,33 @@ class ShoppingListController extends Controller
 
     // Save new shopping list to database
     public function store(Request $request)
-    {
-        $request->validate([
-            'name'         => 'required|string|max:255',
-            'ingredients'  => 'nullable|array',
-        ]);
+{
+    $request->validate([
+        'name'        => 'required|string|max:255',
+        'ingredients' => 'nullable|array',
+    ]);
 
-        $shoppingList = ShoppingList::create([
-            'user_id' => Auth::id(),
-            'name'    => $request->name,
-        ]);
+    $shoppingList = ShoppingList::create([
+        'user_id' => auth()->id(),
+        'name'    => $request->name,
+    ]);
 
-        // Add ingredients to the shopping list
-        if ($request->ingredients) {
-            foreach ($request->ingredients as $ingredientId => $quantity) {
+    // Add ingredients to the shopping list
+    if ($request->ingredient_ids) {
+        foreach ($request->ingredient_ids as $index => $ingredientId) {
+            if ($ingredientId) {
                 ShoppingListItem::create([
                     'shopping_list_id' => $shoppingList->id,
                     'ingredient_id'    => $ingredientId,
-                    'quantity'         => $quantity,
+                    'quantity'         => $request->quantities[$index] ?? '',
                     'is_checked'       => false,
                 ]);
             }
         }
-
-        return redirect()->route('shopping-lists.index')->with('success', 'Shopping list created successfully!');
     }
+
+    return redirect()->route('shopping-lists.index')->with('success', 'Shopping list created successfully!');
+}
 
     // Show a single shopping list
     public function show(ShoppingList $shoppingList)

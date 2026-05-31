@@ -1,4 +1,4 @@
-@extends('layouts.su-chef')
+@extends('layouts.dashboard')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         {{-- Header --}}
         <div class="mb-10">
             <h1 class="font-serif text-4xl font-bold text-suText mb-2">My Preferences</h1>
-            <p class="text-gray-500">Personalise your Su-chef experience.</p>
+            <p class="text-gray-500">Personalize your Su-chef experience.</p>
         </div>
 
         {{-- Preferences Card --}}

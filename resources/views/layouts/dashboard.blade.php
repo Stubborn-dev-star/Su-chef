@@ -6,7 +6,7 @@
     <title>Su-chef — @yield('title', 'Dashboard')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-suBg font-sans text-suText">
@@ -42,34 +42,34 @@
             <p class="text-xs text-gray-500 uppercase tracking-widest mb-3 px-2">Main</p>
 
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('dashboard') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>🏠</span> Dashboard
+                <i class="fa-solid fa-house w-4"></i> Dashboard
             </a>
             <a href="{{ route('recipes.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('recipes.index') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>🍽️</span> All Recipes
+                <i class="fa-solid fa-utensils w-4"></i> All Recipes
             </a>
             <a href="{{ route('recipes.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('recipes.create') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>➕</span> Add Recipe
+                <i class="fa-solid fa-plus w-4"></i> Add Recipe
             </a>
             <a href="{{ route('categories.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('categories*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>📂</span> Categories
+                <i class="fa-solid fa-folder w-4"></i> Categories
             </a>
             <a href="{{ route('ingredients.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('ingredients*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>🥕</span> Ingredients
+                <i class="fa-solid fa-carrot w-4"></i> Ingredients
             </a>
 
             <p class="text-xs text-gray-500 uppercase tracking-widest mb-3 mt-6 px-2">My Stuff</p>
 
             <a href="{{ route('favorites.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('favorites*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>❤️</span> Favourites
+                <i class="fa-solid fa-heart w-4"></i> Favorites 
             </a>
             <a href="{{ route('shopping-lists.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('shopping-lists*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>🛒</span> Shopping Lists
+                <i class="fa-solid fa-cart-shopping w-4"></i> Shopping Lists
             </a>
             <a href="{{ route('preferences.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('preferences*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>🎯</span> Preferences
+                <i class="fa-solid fa-sliders w-4"></i> Preferences
             </a>
             <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('profile*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
-                <span>👤</span> Profile
+                <i class="fa-solid fa-user w-4"></i> Profile
             </a>
         </nav>
 
@@ -78,7 +78,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/20 text-gray-300 hover:text-red-400 font-medium text-sm transition-all duration-200">
-                    <span>🚪</span> Logout
+                    <i class="fa-solid fa-right-from-bracket w-4"></i> Logout
                 </button>
             </form>
         </div>
@@ -97,34 +97,6 @@
                     const flash = document.getElementById('flash-message');
                     if(flash) { flash.style.opacity = '0'; setTimeout(() => flash.remove(), 500); }
                 }, 3000);
-                const favoriteBtn = document.getElementById("favoriteBtn");
-const heartIcon = favoriteBtn.querySelector("i");
-
-// Check saved state when page loads
-let isFavorited = localStorage.getItem("favorite") === "true";
-
-if (isFavorited) {
-    heartIcon.classList.remove("fa-regular");
-    heartIcon.classList.add("fa-solid");
-    favoriteBtn.classList.add("favorited");
-}
-
-favoriteBtn.addEventListener("click", () => {
-    isFavorited = !isFavorited;
-
-    if (isFavorited) {
-        heartIcon.classList.remove("fa-regular");
-        heartIcon.classList.add("fa-solid");
-        favoriteBtn.classList.add("favorited");
-    } else {
-        heartIcon.classList.remove("fa-solid");
-        heartIcon.classList.add("fa-regular");
-        favoriteBtn.classList.remove("favorited");
-    }
-
-    // Save state
-    localStorage.setItem("favorite", isFavorited);
-});
             </script>
         @endif
 

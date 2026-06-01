@@ -22,14 +22,14 @@
                 <a href="{{ route('categories.show', $category) }}"
                    class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-200 group text-center">
                     <div class="text-5xl mb-4">
-                        @if(str_contains(strtolower($category->name), 'breakfast')) 🌅
-                        @elseif(str_contains(strtolower($category->name), 'lunch')) 🥗
-                        @elseif(str_contains(strtolower($category->name), 'dinner')) 🍽️
-                        @elseif(str_contains(strtolower($category->name), 'nigerian')) 🇳🇬
-                        @elseif(str_contains(strtolower($category->name), 'snack')) 🍿
-                        @elseif(str_contains(strtolower($category->name), 'dessert')) 🍰
-                        @elseif(str_contains(strtolower($category->name), 'vegan')) 🥦
-                        @else 🍴
+                        @if(str_contains(strtolower($category->name), 'breakfast')) <i class="fa-solid fa-sun text-yellow-400 text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'lunch')) <i class="fa-solid fa-bowl-food text-green-500 text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'dinner')) <i class="fa-solid fa-utensils text-primary text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'nigerian')) <i class="fa-solid fa-flag text-green-600 text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'snack')) <i class="fa-solid fa-cookie text-yellow-500 text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'dessert') || str_contains(strtolower($category->name), 'desert')) <i class="fa-solid fa-cake-candles text-pink-400 text-4xl"></i>
+                        @elseif(str_contains(strtolower($category->name), 'vegan')) <i class="fa-solid fa-leaf text-green-500 text-4xl"></i>
+                        @else <i class="fa-solid fa-utensils text-primary text-4xl"></i>
                         @endif
                     </div>
                     <h3 class="font-serif text-xl font-bold text-suText group-hover:text-primary transition-colors mb-2">

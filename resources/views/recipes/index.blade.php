@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.su-chef')
 
 @section('content')
 
@@ -97,7 +97,7 @@
                             @auth
                                 <form method="POST" action="{{ route('favorites.store', $recipe) }}">
                                     @csrf
-                                    <button type="submit" class="border border-primary text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center text-sm" onclick="this.classList.toggle('fa-solid'); this.classList.toggle('fa-regular');">
+                                    <button type="submit" class="border border-primary text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center text-sm" onclick="$heartIcon">
                                         <i class="fa-regular fa-heart"></i>
                                     </button>
                                 </form>

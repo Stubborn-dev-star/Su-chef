@@ -14,7 +14,7 @@
 </div>
 
 {{-- Search & Filter Bar --}}
-<div class="bg-white shadow-sm sticky top-16 z-40 px-6 py-4">
+<div class="bg-white shadow-sm top-16 z-40 px-6 py-4">
     <div class="max-w-6xl mx-auto flex flex-wrap gap-4 items-center justify-between">
         <input
             type="text"
@@ -97,8 +97,8 @@
                             @auth
                                 <form method="POST" action="{{ route('favorites.store', $recipe) }}">
                                     @csrf
-                                    <button type="submit" class="border border-primary text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center text-sm">
-                                        ❤
+                                    <button type="submit" class="border border-primary text-primary hover:bg-primary hover:text-white w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center text-sm" onclick="this.classList.toggle('fa-solid'); this.classList.toggle('fa-regular');">
+                                        <i class="fa-regular fa-heart"></i>
                                     </button>
                                 </form>
                             @endauth

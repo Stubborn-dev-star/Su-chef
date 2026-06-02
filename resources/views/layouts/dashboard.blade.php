@@ -47,6 +47,9 @@
             <a href="{{ route('recipes.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('recipes.index') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
                 <i class="fa-solid fa-utensils w-4"></i> All Recipes
             </a>
+            <a href="{{ route('recipes.match') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('recipes.match*') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
+                <i class="fa-solid fa-wand-magic-sparkles w-4"></i> Smart Match
+            </a>
             <a href="{{ route('recipes.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('recipes.create') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">
                 <i class="fa-solid fa-plus w-4"></i> Add Recipe
             </a>

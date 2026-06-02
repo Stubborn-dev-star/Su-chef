@@ -121,4 +121,40 @@ class RecipeController extends Controller
         $recipe->delete();
         return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully!');
     }
+    // Smart Ingredient Matching
+public function match(Request $request)
+{
+    $ingredients = Ingredient::all();
+    $matchedRecipes = collect();
+
+    if ($request->isMethod('post') && $request->ingredient_ids) {
+        $selectedIds = array_filter($request->ingredient_ids);
+
+        if (!empty($selectedIds)) {
+            $recipes = Recipe::with(['ingredients', 'categories', 'user', 'reviews'])->get();
+
+            foreach ($recipes as $recipe) {
+                $recipeIngredientIds = $recipe->ingredients->pluck('id')->toArray();
+                $matchCount = count(array_intersect($selectedIds, $recipeIngredientIds));
+                $totalIngredients = count($recipeIngredientIds);
+
+                if ($matchCount > 0) {
+                    $percentage = $totalIngredients > 0
+                        ? round(($matchCount / $totalIngredients) * 100)
+                        : 0;
+
+                    $recipe->match_count = $matchCount;
+                    $recipe->match_percentage = $percentage;
+                    $recipe->total_ingredients = $totalIngredients;
+                    $matchedRecipes->push($recipe);
+                }
+            }
+
+            // Sort by match percentage (highest first)
+            $matchedRecipes = $matchedRecipes->sortByDesc('match_percentage');
+        }
+    }
+
+    return view('recipes.match', compact('ingredients', 'matchedRecipes'));
+}
 }

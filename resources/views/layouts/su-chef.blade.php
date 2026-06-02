@@ -19,6 +19,7 @@
         <ul class="flex gap-8 items-center list-none">
             <li><a href="{{ route('recipes.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Recipes</a></li>
             <li><a href="{{ route('categories.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Categories</a></li>
+            <li><a href="{{ route('recipes.match') }}" class="text-white hover:text-secondary transition-colors font-medium">Smart Match</a></li>
             @auth
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">

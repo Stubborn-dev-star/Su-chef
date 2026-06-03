@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Recipe Hero --}}
-<div class="relative h-96 overflow-hidden" style="margin-top: 80px;">
+<div class="relative h-96 overflow-hidden rounded-lg mt-8">
     @if($recipe->image)
         <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->title }}" class="w-full h-full object-cover">
     @else
@@ -133,9 +133,9 @@
                         </button>
                     </form>
                     {{-- Download/Print Shopping List --}}
-                    <button onclick="window.print()" class="w-full border border-suText text-suText hover:bg-suText hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
+                    <!-- <button onclick="window.print()" class="w-full border border-suText text-suText hover:bg-suText hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
                         <i class="fa-solid fa-print mr-2"></i> Print Ingredients
-                    </button>
+                    </button> -->
                     @if(auth()->id() === $recipe->user_id)
                         <a href="{{ route('recipes.edit', $recipe) }}" class="block w-full text-center border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
                             ✏ Edit Recipe

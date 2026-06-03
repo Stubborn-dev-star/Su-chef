@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">
+<div class="bg-suText pb-16 px-6 text-center pt-40 rounded-lg">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">Ingredients</h1>
     <p class="text-gray-400 text-lg max-w-xl mx-auto">All ingredients available on Su-chef.</p>
     @auth

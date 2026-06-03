@@ -11,6 +11,13 @@
 </head>
 <body class="bg-suBg font-sans text-suText">
 
+    <div id="page-loader" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/70 text-white">
+        <div class="flex flex-col items-center gap-3">
+            <div class="h-16 w-16 rounded-full border-4 border-white/10 border-t-white animate-spin"></div>
+            <span class="text-sm uppercase tracking-[0.3em]">Loading...</span>
+        </div>
+    </div>
+
 <div class="flex min-h-screen">
 
     {{-- ── Sidebar ── --}}

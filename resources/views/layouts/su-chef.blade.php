@@ -11,6 +11,13 @@
 </head>
 <body class="bg-suBg text-suText font-sans">
 
+    <div id="page-loader" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 text-white">
+        <div class="flex flex-col items-center gap-3">
+            <div class="h-16 w-16 rounded-full border-4 border-white/10 border-t-white animate-spin"></div>
+            <span class="text-sm uppercase tracking-[0.3em]">Loading...</span>
+        </div>
+    </div>
+
     {{-- Navbar --}}
     <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-16 py-5 bg-black/35 backdrop-blur-md">
         <a href="{{ route('home') }}" class="font-serif text-3xl font-bold text-white tracking-wide">

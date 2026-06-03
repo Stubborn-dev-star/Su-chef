@@ -134,8 +134,7 @@
 
                             {{-- Actions --}}
                             <div class="flex gap-3">
-                                <a href="{{ route('recipes.show', $recipe) }}"
-                                   class="flex-1 text-center bg-primary hover:bg-secondary text-white text-sm font-semibold py-2 rounded-full transition-all duration-200">
+                                <a href="{{ route('recipes.show', $recipe) }}"class="flex-1 text-center bg-primary hover:bg-secondary text-white text-sm font-semibold py-2 rounded-full transition-all duration-200">
                                     View Recipe
                                 </a>
                                 @auth

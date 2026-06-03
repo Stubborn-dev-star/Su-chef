@@ -125,6 +125,17 @@
                             ❤ Save to Favourites
                         </button>
                     </form>
+                    {{-- Generate Shopping List --}}
+                    <form method="POST" action="{{ route('shopping-lists.generate', $recipe) }}">
+                        @csrf
+                        <button class="w-full bg-suText hover:bg-gray-800 text-white font-semibold py-3 rounded-full transition-all duration-200">
+                            <i class="fa-solid fa-cart-shopping mr-2"></i> Generate Shopping List
+                        </button>
+                    </form>
+                    {{-- Download/Print Shopping List --}}
+                    <button onclick="window.print()" class="w-full border border-suText text-suText hover:bg-suText hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
+                        <i class="fa-solid fa-print mr-2"></i> Print Ingredients
+                    </button>
                     @if(auth()->id() === $recipe->user_id)
                         <a href="{{ route('recipes.edit', $recipe) }}" class="block w-full text-center border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
                             ✏ Edit Recipe
@@ -147,3 +158,11 @@
 </div>
 
 @endsection
+@push('styles')
+<style>
+    @media print {
+        nav, footer, .actions-sidebar, form { display: none !important; }
+        .print-section { display: block !important; }
+    }
+</style>
+@endpush

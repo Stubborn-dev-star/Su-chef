@@ -79,6 +79,8 @@ Route::middleware('auth')->group(function () {
     Route::get('shopping-lists/{shoppingList}', [ShoppingListController::class, 'show'])->name('shopping-lists.show');
     Route::delete('shopping-lists/{shoppingList}', [ShoppingListController::class, 'destroy'])->name('shopping-lists.destroy');
     Route::patch('shopping-lists/items/{item}/toggle', [ShoppingListController::class, 'toggleItem'])->name('shopping-lists.toggle');
+    // Generate shopping list from recipe
+Route::post('shopping-lists/generate/{recipe}', [ShoppingListController::class, 'generateFromRecipe'])->name('shopping-lists.generate');
 
     // User Preferences
     Route::get('preferences', [UserPreferenceController::class, 'index'])->name('preferences.index');

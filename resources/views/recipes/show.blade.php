@@ -133,9 +133,9 @@
                         </button>
                     </form>
                     {{-- Download/Print Shopping List --}}
-                    <button onclick="window.print()" class="w-full border border-suText text-suText hover:bg-suText hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
+                    <!-- <button onclick="window.print()" class="w-full border border-suText text-suText hover:bg-suText hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
                         <i class="fa-solid fa-print mr-2"></i> Print Ingredients
-                    </button>
+                    </button> -->
                     @if(auth()->id() === $recipe->user_id)
                         <a href="{{ route('recipes.edit', $recipe) }}" class="block w-full text-center border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-full transition-all duration-200">
                             ✏ Edit Recipe

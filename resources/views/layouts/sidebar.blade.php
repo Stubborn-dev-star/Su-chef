@@ -18,7 +18,7 @@
 
         {{-- Logo --}}
         <div class="px-6 py-6 border-b border-white/10">
-            <a href="{{ route('home') }}" class="font-serif text-2xl font-bold text-white">
+            <a href="{{ route('home') }}" class="font-serif text-2xl    font-bold text-white">
                 Su<span class="text-secondary">-chef</span>
             </a>
             <p class="text-xs text-gray-400 mt-1">Cook With What You Have</p>

@@ -7,6 +7,7 @@ use App\Models\ShoppingListItem;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Recipe;
 
 class ShoppingListController extends Controller
 {
@@ -77,4 +78,29 @@ class ShoppingListController extends Controller
         $shoppingList->delete();
         return redirect()->route('shopping-lists.index')->with('success', 'Shopping list deleted successfully!');
     }
+    // Generate shopping list from a recipe
+public function generateFromRecipe(Recipe $recipe)
+{
+    // Load the recipe ingredients
+    $recipe->load('ingredients');
+
+    // Create a new shopping list named after the recipe
+    $shoppingList = ShoppingList::create([
+        'user_id' => auth()->id(),
+        'name'    => $recipe->title . ' — Shopping List',
+    ]);
+
+    // Add each ingredient to the shopping list
+    foreach ($recipe->ingredients as $ingredient) {
+        ShoppingListItem::create([
+            'shopping_list_id' => $shoppingList->id,
+            'ingredient_id'    => $ingredient->id,
+            'quantity'         => $ingredient->pivot->quantity,
+            'is_checked'       => false,
+        ]);
+    }
+
+    return redirect()->route('shopping-lists.show', $shoppingList)
+        ->with('success', 'Shopping list generated from ' . $recipe->title . '!');
+}
 }

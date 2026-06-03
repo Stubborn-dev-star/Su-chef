@@ -1,4 +1,4 @@
-@extends('layouts.su-chef')
+@extends('layouts.sidebar')
 
 @section('content')
 

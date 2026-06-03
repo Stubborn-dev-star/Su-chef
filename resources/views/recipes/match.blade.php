@@ -1,4 +1,4 @@
-@extends('layouts.su-chef')
+@extends('layouts.sidebar')
 
 @section('content')
 
@@ -121,8 +121,7 @@
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full h-2">
                                     <div class="h-2 rounded-full transition-all duration-500
-                                        {{ $recipe->match_percentage >= 75 ? 'bg-green-500' : ($recipe->match_percentage >= 50 ? 'bg-yellow-400' : 'bg-orange-400') }}"
-                                        style="width: {{ $recipe->match_percentage }}%">
+                                        {{ $recipe->match_percentage >= 75 ? 'bg-green-500' : ($recipe->match_percentage >= 50 ? 'bg-yellow-400' : 'bg-orange-400') }} w[ {{ $recipe->match_percentage }}%"]>
                                     </div>
                                 </div>
                             </div>

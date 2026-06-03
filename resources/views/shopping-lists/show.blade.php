@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.sidebar')
 
 @section('content')
 
@@ -36,7 +36,7 @@
                 <span class="text-sm text-gray-400">{{ $checked }}/{{ $total }} items</span>
             </div>
             <div class="w-full bg-gray-100 rounded-full h-3">
-                <div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: {{ $percentage }}%"></div>
+                <div class="bg-primary h-3 rounded-full transition-all duration-500 w-[{{ $percentage }}%]"></div>
             </div>
             <p class="text-xs text-gray-400 mt-2">{{ $percentage }}% complete</p>
         </div>

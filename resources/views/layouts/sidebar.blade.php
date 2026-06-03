@@ -38,7 +38,7 @@
         </div>
 
         {{-- Navigation --}}
-        <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto scrollbar-thumb-primary scrollbar-none">
             <p class="text-xs text-gray-500 uppercase tracking-widest mb-3 px-2">Main</p>
 
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl {{ request()->routeIs('dashboard') ? 'bg-primary/20 text-white' : 'hover:bg-white/10 text-gray-300 hover:text-white' }} font-medium text-sm transition-all duration-200">

@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Page Header --}}
-<div class="bg-suText pb-20 px-6 text-center pt-20 rounded-t-md">
+<div class="bg-suText py-16 px-6 text-center rounded-t-md">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">All Recipes</h1>
     <p class="text-gray-400 text-lg max-w-xl mx-auto">Browse our collection of delicious recipes from our community of cooks.</p>
     @auth

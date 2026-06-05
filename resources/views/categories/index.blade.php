@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">
+<div class="bg-suText py-16 px-6 text-center rounded-md">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">Categories</h1>
     <p class="text-gray-400 text-lg max-w-xl mx-auto">Browse recipes by meal type or cuisine.</p>
     @auth
@@ -20,7 +20,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($categories as $category)
                 <a href="{{ route('categories.show', $category) }}"
-                   class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-200 group text-center">
+                    class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-200 group text-center">
                     <div class="text-5xl mb-4">
                         @if(str_contains(strtolower($category->name), 'breakfast')) <i class="fa-solid fa-sun text-yellow-400 text-4xl"></i>
                         @elseif(str_contains(strtolower($category->name), 'lunch')) <i class="fa-solid fa-bowl-food text-green-500 text-4xl"></i>

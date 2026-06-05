@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">
+<div class="bg-suText py-16 px-6 text-center rounded-md">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">My Shopping Lists</h1>
     <p class="text-gray-400 text-lg max-w-xl mx-auto">Manage your grocery lists for your favourite recipes.</p>
     <a href="{{ route('shopping-lists.create') }}" class="inline-block mt-8 bg-primary hover:bg-secondary text-white font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:-translate-y-1">

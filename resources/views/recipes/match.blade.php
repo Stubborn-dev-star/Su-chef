@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center rounded-md pt-16">
+<div class="bg-suText py-16 px-6 text-center rounded-md">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">
         Smart Ingredient Matching
     </h1>

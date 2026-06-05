@@ -19,16 +19,17 @@
     </div>
 
     {{-- Navbar --}}
-    <nav x-data="{ open: false }" class="fixed top-0 w-full z-50 flex justify-between items-center px-16 py-5 bg-black/35 backdrop-blur-md">
-        <a href="{{ route('home') }}" class="font-serif text-3xl font-bold text-white tracking-wide">
-            Su<span class="text-secondary">-chef</span>
-        </a>
-        <ul class="hidden sm:flex gap-8 items-center list-none">
-            <li><a href="{{ route('recipes.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Recipes</a></li>
-            <li><a href="{{ route('categories.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Categories</a></li>
-            <li><a href="{{ route('recipes.match') }}" class="text-white hover:text-secondary transition-colors font-medium">Smart Match</a></li>
+    <div x-data="{ open: false }" class="relative">
+        <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 sm:px-10 lg:px-16 py-4 bg-black/35 backdrop-blur-md">
+            <a href="{{ route('home') }}" class="font-serif text-2xl lg:text-3xl font-bold text-white tracking-wide">
+                Su<span class="text-secondary">-chef</span>
+            </a>
+        <div class="hidden lg:flex gap-4 lg:gap-6 items-center">
+            <a href="{{ route('recipes.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Recipes</a>
+            <a href="{{ route('categories.index') }}" class="text-white hover:text-secondary transition-colors font-medium">Categories</a>
+            <a href="{{ route('recipes.match') }}" class="text-white hover:text-secondary transition-colors font-medium">Smart Match</a>
             @auth
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden lg:flex lg:items-center lg:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -64,17 +65,13 @@
                 </x-dropdown>
             </div>
             @else
-                <li><a href="{{ route('login') }}" class="text-white hover:text-secondary transition-colors font-medium">Login</a></li>
-                <li>
-                    <a href="{{ route('register') }}" class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2 rounded-full transition-all duration-200">
-                        Get Started
-                    </a>
-                </li>
+                <a href="{{ route('login') }}" class="text-white hover:text-secondary transition-colors font-medium">Login</a>
+                <a href="{{ route('register') }}" class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2 rounded-full transition-all duration-200">Get Started</a>
             @endauth
-        </ul>
+        </div>
 
-        <!-- Hamburger (mobile) -->
-        <div class="sm:hidden">
+        <!-- Hamburger (mobile/tablet) -->
+        <div class="lg:hidden">
             <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-secondary focus:outline-none focus:bg-white/10">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -85,22 +82,26 @@
     </nav>
 
     <!-- Mobile Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-black/90 z-40 fixed top-16 left-0 right-0">
-        <div class="px-4 pt-2 pb-4 space-y-1">
-            <a href="{{ route('recipes.index') }}" class="block text-white px-3 py-2 rounded-md">Recipes</a>
-            <a href="{{ route('categories.index') }}" class="block text-white px-3 py-2 rounded-md">Categories</a>
-            <a href="{{ route('recipes.match') }}" class="block text-white px-3 py-2 rounded-md">Smart Match</a>
-            @guest
-                <a href="{{ route('login') }}" class="block text-white px-3 py-2 rounded-md">Login</a>
-                <a href="{{ route('register') }}" class="block bg-primary text-white px-3 py-2 rounded-md">Get Started</a>
-            @else
-                <a href="{{ route('dashboard') }}" class="block text-white px-3 py-2 rounded-md">Dashboard</a>
-                <a href="{{ route('profile.edit') }}" class="block text-white px-3 py-2 rounded-md">Profile</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="w-full text-left px-3 py-2 text-white">Log Out</button>
-                </form>
-            @endguest
+        <div x-show="open" x-cloak @keydown.escape.window="open = false" @click.away="open = false" class="lg:hidden bg-black/90 z-40 fixed top-16 left-0 right-0">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <!-- <button type="button" @click="open = false" class="w-full text-left text-white text-sm font-semibold px-3 py-3 rounded-md bg-white/10 hover:bg-white/20 transition">
+                    Close menu
+                </button> -->
+                <a href="{{ route('recipes.index') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Recipes</a>
+                <a href="{{ route('categories.index') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Categories</a>
+                <a href="{{ route('recipes.match') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Smart Match</a>
+                @guest
+                    <a href="{{ route('login') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Login</a>
+                    <a href="{{ route('register') }}" @click="open = false" class="block bg-primary text-white px-3 py-2 rounded-md">Get Started</a>
+                @else
+                    <a href="{{ route('dashboard') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Dashboard</a>
+                    <a href="{{ route('profile.edit') }}" @click="open = false" class="block text-white px-3 py-2 rounded-md">Profile</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" @click="open = false" class="w-full text-left px-3 py-2 text-white">Log Out</button>
+                    </form>
+                @endguest
+            </div>
         </div>
     </div>
 

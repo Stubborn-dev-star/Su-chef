@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">
+<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">  
     <div class="text-6xl mb-4">
         @if(str_contains(strtolower($category->name), 'breakfast')) <i class="fa-solid fa-sun text-yellow-400 text-4xl"></i>
         @elseif(str_contains(strtolower($category->name), 'lunch')) <i class="fa-solid fa-bowl-food text-green-500 text-4xl"></i>

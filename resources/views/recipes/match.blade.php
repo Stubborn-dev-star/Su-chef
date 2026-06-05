@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Header --}}
-<div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">
+<div class="bg-suText pb-16 px-6 text-center rounded-md pt-16">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">
         Smart Ingredient Matching
     </h1>
@@ -28,7 +28,7 @@
                 @csrf
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
                     @foreach($ingredients as $ingredient)
-                    <label class="flex items-center gap-3 cursor-pointer bg-suBg hover:bg-primary/10 border border-transparent hover:border-primary px-4 py-3 rounded-xl transition-all duration-200 group">
+                    <label class="flex items-center gap-2 cursor-pointer bg-suBg hover:bg-primary/10 border border-transparent hover:border-primary px-3 py-3 rounded-xl transition-all duration-200 group">
                         <input type="checkbox" name="ingredient_ids[]" value="{{ $ingredient->id }}"
                             {{ request()->isMethod('post') && in_array($ingredient->id, request()->ingredient_ids ?? []) ? 'checked' : '' }}
                             class="w-4 h-4 accent-primary">
@@ -40,9 +40,9 @@
                     @endforeach
                 </div>
 
-                <div class="flex gap-4">
-                    <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-200 hover:-translate-y-1 shadow-lg">
-                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Find Matching Recipes
+                <div class="flex gap-4 flex-col lg:flex-row">
+                    <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-200 hover:-translate-y-1 shadow-lg flex flex-row items-center justify-center gap-1">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i><span class="hidden sm:flex"> Find Matching Recipes</span><h1 class="flex flex-row sm:hidden">Find</h1>
                     </button>
                     <a href="{{ route('recipes.match') }}" class="px-8 py-4 border border-gray-300 text-gray-500 hover:border-primary hover:text-primary rounded-full font-semibold transition-all duration-200">
                         Clear

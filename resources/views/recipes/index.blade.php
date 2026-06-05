@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Page Header --}}
-<div class="bg-suText pb-20 px-6 text-center" style="padding-top: 140px; padding-bottom: 40px;">
+<div class="bg-suText pb-20 px-6 text-center pt-20 rounded-t-md">
     <h1 class="font-serif text-5xl font-bold text-white mb-4">All Recipes</h1>
     <p class="text-gray-400 text-lg max-w-xl mx-auto">Browse our collection of delicious recipes from our community of cooks.</p>
     @auth
@@ -14,7 +14,7 @@
 </div>
 
 {{-- Search & Filter Bar --}}
-<div class="bg-white shadow-sm top-16 z-40 px-6 py-4">
+<div class="bg-white shadow-sm top-16 z-40 px-6 py-4 rounded-b-md sticky">
     <div class="max-w-6xl mx-auto flex flex-wrap gap-4 items-center justify-between">
         <input
             type="text"

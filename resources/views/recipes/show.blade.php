@@ -106,7 +106,7 @@
                     <ul class="space-y-3">
                         @foreach($recipe->ingredients as $ingredient)
                         <li class="flex justify-between items-center py-2 border-b border-gray-50 last:border-0">
-                            <span class="text-gray-700 text-sm font-medium">{{ $ingredient->name }}</span><span class="text-gray-400 text-sm">{{ $ingredient->pivot->quantity }}</span>
+                            <span class="text-gray-700 text-sm font-medium">{{ $ingredient->name }}</span><span class="text-gray-400 text-sm">{{ $ingredient->pivot->quantity }} {{ $ingredient->unit }}</span>
                         </li>
                         @endforeach
                     </ul>

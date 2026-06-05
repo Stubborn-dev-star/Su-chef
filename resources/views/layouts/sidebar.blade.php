@@ -110,10 +110,10 @@
         {{-- ── Main Content --}}
         <main class="ml-0 flex-1 p-8 sm:ml-64 transition-all duration-300">
 
-            <button @click="sidebarOpen = ! sidebarOpen" class="sm:hidden fixed top-4 left-4 z-40 inline-flex items-center justify-center p-2 rounded-md bg-white/10 text-white hover:bg-white/20 focus:outline-none">
+            <button @click="sidebarOpen = ! sidebarOpen" class="sm:hidden fixed top-2 right-4 z-40 inline-flex items-center justify-center p-2 rounded-md bg-white/10 text-secondary hover:bg-white/20 focus:outline-none">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{'hidden': sidebarOpen, 'inline-flex': ! sidebarOpen }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! sidebarOpen, 'inline-flex': sidebarOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <!-- <path :class="{'hidden': ! sidebarOpen, 'inline-flex': sidebarOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /> -->
                 </svg>
             </button>
 

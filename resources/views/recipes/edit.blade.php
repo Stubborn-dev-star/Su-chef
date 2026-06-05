@@ -101,7 +101,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        <input type="text" name="quantities[]" value="{{ $ingredient->pivot->quantity }}" placeholder="Quantity e.g. 2 cups"
+                        <input type="number" name="quantities[]" value="{{ $ingredient->pivot->quantity }}" placeholder="Quantity e.g. 2 cups"
                             class="flex-1 border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-primary">
                         <button type="button" onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-600 text-lg">✕</button>
                     </div>

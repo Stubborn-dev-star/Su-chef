@@ -37,11 +37,11 @@ class IngredientController extends Controller
     }
 
     // Show a single ingredient with its recipes
-    public function show(Ingredient $ingredient)
-    {
-        $ingredient->load('recipes');
-        return view('ingredients.show', compact('ingredient'));
-    }
+    // public function show(Ingredient $ingredient)
+    // {
+    //     $ingredient->load('recipes');
+    //     return view('ingredients.show', compact('ingredient'));
+    // }
 
     // Show form to edit an ingredient
     public function edit(Ingredient $ingredient)

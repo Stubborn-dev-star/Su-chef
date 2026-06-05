@@ -28,15 +28,31 @@
                 <label class="block text-sm font-semibold text-suText mb-2">Unit of Measurement</label>
                 <select name="unit" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary">
                     <option value="">Select unit</option>
-                    <option value="pieces" {{ old('unit') === 'pieces' ? 'selected' : '' }}>Pieces</option>
-                    <option value="cups" {{ old('unit') === 'cups' ? 'selected' : '' }}>Cups</option>
-                    <option value="tbsp" {{ old('unit') === 'tbsp' ? 'selected' : '' }}>Tablespoon (tbsp)</option>
-                    <option value="tsp" {{ old('unit') === 'tsp' ? 'selected' : '' }}>Teaspoon (tsp)</option>
-                    <option value="kg" {{ old('unit') === 'kg' ? 'selected' : '' }}>Kilogram (kg)</option>
-                    <option value="grams" {{ old('unit') === 'grams' ? 'selected' : '' }}>Grams</option>
-                    <option value="liters" {{ old('unit') === 'liters' ? 'selected' : '' }}>Liters</option>
-                    <option value="ml" {{ old('unit') === 'ml' ? 'selected' : '' }}>Milliliters (ml)</option>
-                    <option value="pinch" {{ old('unit') === 'pinch' ? 'selected' : '' }}>Pinch</option>
+                    {{-- Weight --}}
+                    <optgroup label="Weight">
+                        <option value="grams"      {{ old('unit') === 'grams'      ? 'selected' : '' }}>Grams (g)</option>
+                        <option value="kilograms"  {{ old('unit') === 'kilograms'  ? 'selected' : '' }}>Kilograms (kg)</option>
+                        <option value="ounces"     {{ old('unit') === 'ounces'     ? 'selected' : '' }}>Ounces (oz)</option>
+                        <option value="pounds"     {{ old('unit') === 'pounds'     ? 'selected' : '' }}>Pounds (lb)</option>
+                    </optgroup>
+
+                    <optgroup label="Volume">
+                        <option value="milliliters" {{ old('unit') === 'milliliters' ? 'selected' : '' }}>Milliliters (ml)</option>
+                        <option value="liters"      {{ old('unit') === 'liters'      ? 'selected' : '' }}>Liters (L)</option>
+                        <option value="teaspoon"    {{ old('unit') === 'teaspoon'    ? 'selected' : '' }}>Teaspoon (tsp)</option>
+                        <option value="tablespoon"  {{ old('unit') === 'tablespoon'  ? 'selected' : '' }}>Tablespoon (tbsp)</option>
+                        <option value="cups"        {{ old('unit') === 'cups'        ? 'selected' : '' }}>Cups</option>
+                    </optgroup>
+                    
+                    <optgroup label="Count">
+                        <option value="pieces"  {{ old('unit') === 'pieces'  ? 'selected' : '' }}>Pieces</option>
+                        <option value="slices"  {{ old('unit') === 'slices'  ? 'selected' : '' }}>Slices</option>
+                        <option value="cloves"  {{ old('unit') === 'cloves'  ? 'selected' : '' }}>Cloves</option>
+                        <option value="pinch"   {{ old('unit') === 'pinch'   ? 'selected' : '' }}>Pinch</option>
+                        <option value="handful" {{ old('unit') === 'handful' ? 'selected' : '' }}>Handful</option>
+                        <option value="whole"   {{ old('unit') === 'whole'   ? 'selected' : '' }}>Whole</option>
+                        <option value="bunch"   {{ old('unit') === 'bunch'   ? 'selected' : '' }}>Bunch</option>
+                    </optgroup>
                 </select>
                 @error('unit') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
             </div>

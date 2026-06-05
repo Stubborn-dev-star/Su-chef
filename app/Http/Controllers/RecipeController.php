@@ -107,9 +107,24 @@ class RecipeController extends Controller
             'difficulty'  => $request->difficulty,
         ]);
 
-        // Sync categories and ingredients
+        // Sync categories
         if ($request->categories) {
             $recipe->categories()->sync($request->categories);
+        }
+
+        // Sync ingredients
+        if ($request->ingredient_ids) {
+            $ingredientData = [];
+            foreach ($request->ingredient_ids as $index => $ingredientId) {
+                if ($ingredientId) {
+                    $ingredientData[$ingredientId] = [
+                        'quantity' => $request->quantities[$index] ?? ''
+                    ];
+                }
+            }
+            $recipe->ingredients()->sync($ingredientData);
+        } else {
+            $recipe->ingredients()->detach();
         }
 
         return redirect()->route('recipes.show', $recipe)->with('success', 'Recipe updated successfully!');

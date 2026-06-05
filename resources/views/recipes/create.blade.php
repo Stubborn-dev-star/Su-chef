@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-suBg min-h-screen" style="padding-top: 100px;">
+<div class="bg-suBg min-h-screen rounded-md pt-10">
     <div class="max-w-3xl mx-auto px-6 py-12">
 
         {{-- Header --}}

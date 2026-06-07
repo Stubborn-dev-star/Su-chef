@@ -1,7 +1,8 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
+<button class="rounded-full bg-primary hover:bg-secondary text-white font-bold py-2 px-4" onclick="window.history.back()"><i class="fa-solid fa-arrow-left-long"></i> Back</button><br><br>
+{{-- Recipe Hero --}}
 {{-- Header --}}
 <div class="bg-suText pb-16 px-6 text-center" style="padding-top: 160px;">  
     <div class="text-6xl mb-4">

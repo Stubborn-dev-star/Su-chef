@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
+<button class="rounded-full bg-primary hover:bg-secondary text-white font-bold py-2 px-4" onclick="window.history.back()"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
 {{-- Recipe Hero --}}
 <div class="relative h-96 overflow-hidden rounded-lg mt-8">
     @if($recipe->image)

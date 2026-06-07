@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<button class="rounded-full bg-primary hover:bg-secondary text-white font-bold py-2 px-4" onclick="window.history.back()"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
+<!-- <button class="rounded-full bg-primary hover:bg-secondary text-white font-bold py-2 px-4" onclick="window.history.back()"><i class="fa-solid fa-arrow-left-long"></i> Back</button> -->
 <div class="bg-suBg min-h-screen rounded-md pt-10">
     <div class="max-w-3xl mx-auto px-6 py-12">
 

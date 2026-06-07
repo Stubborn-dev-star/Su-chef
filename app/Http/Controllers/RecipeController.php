@@ -11,11 +11,31 @@ use Illuminate\Support\Facades\Auth;
 class RecipeController extends Controller
 {
     // Show all recipes
-    public function index()
-    {
-        $recipes = Recipe::with(['user', 'categories', 'ingredients'])->latest()->get();
-        return view('recipes.index', compact('recipes'));
+    public function index(Request $request){
+    $query = Recipe::with(['user', 'categories', 'ingredients', 'reviews']);
+
+    // Search by title
+    if ($request->search) {
+        $query->where('title', 'like', '%' . $request->search . '%')
+        ->orWhere('description', 'like', '%' . $request->search . '%');
     }
+
+    // Filter by difficulty
+    if ($request->difficulty && $request->difficulty !== 'all') {
+        $query->where('difficulty', $request->difficulty);
+    }
+
+    // Filter by category
+    if ($request->category && $request->category !== 'all') {
+        $query->whereHas('categories', function($q) use ($request) {
+            $q->where('name', $request->category);
+        });
+    }
+
+    $recipes = $query->latest()->get();
+
+    return view('recipes.index', compact('recipes'));
+}
 
     // Show form to create a new recipe
     public function create()

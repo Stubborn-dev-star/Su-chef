@@ -419,3 +419,12 @@ INSERT INTO ingredients (name, unit, category, created_at, updated_at) VALUES
 ('Toasted Sesame Seeds', 'tbsp', 'Asian Pantry', NOW(), NOW()),
 ('Udon Noodles', 'grams', 'Asian Pantry', NOW(), NOW()),
 ('Wonton Wrappers', 'pieces', 'Asian Pantry', NOW(), NOW());
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=caleboche04@gmail.com
+MAIL_PASSWORD=xflgtuumitqphwkc
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=caleboche04@gmail.com
+MAIL_FROM_NAME="Su-chef"

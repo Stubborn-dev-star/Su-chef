@@ -86,11 +86,11 @@
                 <div class="px-6 py-4 border-b border-white/10 col-span-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold text-white text-sm">
-                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                            {{ auth()->check() ? strtoupper(substr(auth()->user()->name, 0, 1)) : 'G' }}
                         </div>
                         <div>
-                            <p class="text-sm font-semibold text-white">{{ auth()->user()->name }}</p>
-                            <!-- <p class="text-xs text-gray-400">{{ auth()->user()->email }}</p> -->
+                            <p class="text-sm font-semibold text-white">{{ auth()->user()->name ?? 'Guest' }}</p>
+                            <!-- <p class="text-xs text-gray-400">{{ auth()->user()->email ?? 'Email not available' }}</p> -->
                         </div>
                     </div>
                 </div>

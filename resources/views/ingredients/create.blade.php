@@ -36,6 +36,7 @@
                         <option value="pounds"     {{ old('unit') === 'pounds'     ? 'selected' : '' }}>Pounds (lb)</option>
                     </optgroup>
 
+                    {{-- Volume --}}
                     <optgroup label="Volume">
                         <option value="milliliters" {{ old('unit') === 'milliliters' ? 'selected' : '' }}>Milliliters (ml)</option>
                         <option value="liters"      {{ old('unit') === 'liters'      ? 'selected' : '' }}>Liters (L)</option>
@@ -44,6 +45,7 @@
                         <option value="cups"        {{ old('unit') === 'cups'        ? 'selected' : '' }}>Cups</option>
                     </optgroup>
                     
+                    {{-- Count --}}
                     <optgroup label="Count">
                         <option value="pieces"  {{ old('unit') === 'pieces'  ? 'selected' : '' }}>Pieces</option>
                         <option value="slices"  {{ old('unit') === 'slices'  ? 'selected' : '' }}>Slices</option>
@@ -55,6 +57,23 @@
                     </optgroup>
                 </select>
                 @error('unit') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            {{-- Category --}}
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+                <label class="block text-sm font-semibold text-suText mb-2">Category</label>
+                <select name="category" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary">
+                    <option value="">Select category</option>
+                    <option value="Baking, Grains & Sugars"     {{ old('category', $ingredient->category ?? '') === 'Baking, Grains & Sugars'     ? 'selected' : '' }}>Baking, Grains & Sugars</option>
+                    <option value="Dairy & Refrigerated"         {{ old('category', $ingredient->category ?? '') === 'Dairy & Refrigerated'         ? 'selected' : '' }}>Dairy & Refrigerated</option>
+                    <option value="Oils, Vinegars & Condiments"  {{ old('category', $ingredient->category ?? '') === 'Oils, Vinegars & Condiments'  ? 'selected' : '' }}>Oils, Vinegars & Condiments</option>
+                    <option value="Produce"                      {{ old('category', $ingredient->category ?? '') === 'Produce'                      ? 'selected' : '' }}>Produce</option>
+                    <option value="Proteins"                     {{ old('category', $ingredient->category ?? '') === 'Proteins'                     ? 'selected' : '' }}>Proteins</option>
+                    <option value="Pantry Spices & Seasonings"   {{ old('category', $ingredient->category ?? '') === 'Pantry Spices & Seasonings'   ? 'selected' : '' }}>Pantry Spices & Seasonings</option>
+                    <option value="Nigerian Staples"             {{ old('category', $ingredient->category ?? '') === 'Nigerian Staples'             ? 'selected' : '' }}>Nigerian Staples</option>
+                    <option value="Other"                        {{ old('category', $ingredient->category ?? '') === 'Other'                        ? 'selected' : '' }}>Other</option>
+                </select>
+                @error('category') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
             {{-- Submit --}}

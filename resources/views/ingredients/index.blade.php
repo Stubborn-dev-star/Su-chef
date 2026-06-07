@@ -16,36 +16,60 @@
 {{-- Ingredients List --}}
 <section class="py-16 px-6 bg-suBg min-h-screen">
     <div class="max-w-4xl mx-auto">
-        @if($ingredients->count() > 0)
-            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-                @foreach($ingredients as $ingredient)
-                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-50 last:border-0 hover:bg-suBg transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-lg">
-                            🥕
-                        </div>
-                        <div>
-                            <p class="font-semibold text-suText">{{ $ingredient->name }}</p>
-                            <p class="text-xs text-gray-400">Unit: {{ $ingredient->unit ?? 'Not specified' }}</p>
-                        </div>
-                    </div>
-                    @auth
-                    <div class="flex gap-2">
-                        <a href="{{ route('ingredients.edit', $ingredient) }}"
-                           class="text-xs border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-full transition-all duration-200">
-                            Edit
-                        </a>
-                        <form method="POST" action="{{ route('ingredients.destroy', $ingredient) }}">
-                            @csrf @method('DELETE')
-                            <button class="text-xs border border-red-300 text-red-400 hover:bg-red-500 hover:text-white px-4 py-2 rounded-full transition-all duration-200">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                    @endauth
+        @if($grouped->count() > 0)
+
+            @foreach($grouped as $category => $ingredients)
+            <div class="mb-10">
+
+                {{-- Category Header --}}
+                <div class="flex items-center gap-4 mb-4">
+                    <h2 class="font-serif text-xl font-bold text-suText">
+                        {{ $category ?: 'Uncategorised' }}
+                    </h2>
+                    <div class="flex-1 h-px bg-gray-200"></div>
+                    <span class="text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-100">
+                        {{ $ingredients->count() }} {{ Str::plural('ingredient', $ingredients->count()) }}
+                    </span>
                 </div>
-                @endforeach
+
+                {{-- Ingredients in this category --}}
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    @foreach($ingredients as $ingredient)
+                    <div class="flex items-center justify-between px-6 py-4 border-b border-gray-50 last:border-0 hover:bg-suBg transition-colors">
+                        <div class="flex items-center gap-4">
+
+                            {{-- Letter avatar --}}
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary text-sm">
+                                {{ strtoupper(substr($ingredient->name, 0, 1)) }}
+                            </div>
+
+                            <div>
+                                <p class="font-semibold text-suText">{{ $ingredient->name }}</p>
+                                <p class="text-xs text-gray-400">{{ $ingredient->unit ?? 'No unit specified' }}</p>
+                            </div>
+                        </div>
+
+                        @auth
+                        <div class="flex gap-2">
+                            <a href="{{ route('ingredients.edit', $ingredient) }}"
+                               class="text-xs border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-full transition-all duration-200">
+                                Edit
+                            </a>
+                            <form method="POST" action="{{ route('ingredients.destroy', $ingredient) }}">
+                                @csrf @method('DELETE')
+                                <button class="text-xs border border-red-300 text-red-400 hover:bg-red-500 hover:text-white px-4 py-2 rounded-full transition-all duration-200">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                        @endauth
+                    </div>
+                    @endforeach
+                </div>
+
             </div>
+            @endforeach
+
         @else
             <div class="text-center py-24">
                 <div class="text-8xl mb-6">🥕</div>

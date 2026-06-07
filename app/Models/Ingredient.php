@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredient extends Model
 {
     protected $fillable = [
-        'name', 'unit'
+        'name', 'unit', 'category'
     ];
 
     // An ingredient belongs to many recipes (via recipe_ingredients)

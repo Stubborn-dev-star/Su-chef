@@ -28,12 +28,13 @@ Route::get('recipes', [RecipeController::class, 'index'])->name('recipes.index')
 // Categories
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
 
-// Smart Ingredient Matching
-Route::get('match', [RecipeController::class, 'match'])->name('recipes.match');
-Route::post('match', [RecipeController::class, 'match'])->name('recipes.match.post');
 
 // ── Protected Routes ─────────────────────────────────────────────────────────
 Route::middleware('auth')->group(function () {
+
+    // Smart Ingredient Matching
+    Route::get('match', [RecipeController::class, 'match'])->name('recipes.match');
+    Route::post('match', [RecipeController::class, 'match'])->name('recipes.match.post');
 
     // Profile (Breeze default)
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

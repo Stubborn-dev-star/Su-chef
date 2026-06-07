@@ -14,29 +14,41 @@
 </div>
 
 {{-- Search & Filter Bar --}}
-<div class="bg-white shadow-sm top-16 z-40 px-6 py-4 rounded-b-md sticky">
+<form method="GET" action="{{ route('recipes.index') }}" class="bg-white shadow-sm sticky top-16 z-40 px-6 py-4">
     <div class="max-w-6xl mx-auto flex flex-wrap gap-4 items-center justify-between">
         <input
             type="text"
+            name="search"
+            value="{{ request('search') }}"
             placeholder="Search recipes..."
             class="border border-gray-200 rounded-full px-6 py-2 text-sm w-full md:w-80 focus:outline-none focus:border-primary"
         />
         <div class="flex gap-3 flex-wrap">
-            <select class="border border-gray-200 rounded-full px-5 py-2 text-sm focus:outline-none focus:border-primary">
-                <option>All Categories</option>
+            <select name="category" class="border border-gray-200 rounded-full px-5 py-2 text-sm focus:outline-none focus:border-primary">
+                <option value="all">All Categories</option>
                 @foreach(\App\Models\Category::all() as $category)
-                    <option>{{ $category->name }}</option>
+                    <option value="{{ $category->name }}" {{ request('category') === $category->name ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
                 @endforeach
             </select>
-            <select class="border border-gray-200 rounded-full px-5 py-2 text-sm focus:outline-none focus:border-primary">
-                <option>All Difficulties</option>
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
+            <select name="difficulty" class="border border-gray-200 rounded-full px-5 py-2 text-sm focus:outline-none focus:border-primary">
+                <option value="all">All Difficulties</option>
+                <option value="easy" {{ request('difficulty') === 'easy' ? 'selected' : '' }}>Easy</option>
+                <option value="medium" {{ request('difficulty') === 'medium' ? 'selected' : '' }}>Medium</option>
+                <option value="hard" {{ request('difficulty') === 'hard' ? 'selected' : '' }}>Hard</option>
             </select>
+            <button type="submit" class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200">
+                <i class="fa-solid fa-magnifying-glass mr-1"></i> Search
+            </button>
+            @if(request('search') || request('category') || request('difficulty'))
+                <a href="{{ route('recipes.index') }}" class="border border-gray-300 text-gray-500 hover:border-primary hover:text-primary px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200">
+                    Clear
+                </a>
+            @endif
         </div>
     </div>
-</div>
+</form>
 
 {{-- Recipes Grid --}}
 <section class="py-16 px-6 bg-suBg min-h-screen">
